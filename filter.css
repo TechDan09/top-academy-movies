@@ -1,0 +1,71 @@
+.filter {
+  max-width: 1400px;
+  margin: auto;
+  padding: 1rem;
+  background-color: var(--orange);
+  gap: 1rem;
+}
+fieldset {
+  border: none;
+}
+
+input,
+select,
+option {
+  background-color: transparent;
+  border: 1px solid var(--white);
+}
+
+input,
+select,
+option:focus {
+  outline: none;
+}
+
+option {
+  color: var(--black);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.year_filter input {
+  width: 2rem;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+}
+
+.year_filter label {
+  font-size: 0.8rem;
+}
+
+.year_filter button {
+  background-color: var(--dark-background);
+  border: none;
+  padding: 0.3rem 1rem;
+  display: block;
+  margin: 0.3rem 0;
+  width: 100%;
+}
+
+.genre_filter select {
+  width: 9rem;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+}
+
+.search_filter input {
+  width: 12rem;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+}
+
+.year_filter > p,
+.genre_filter > p,
+.search_filter > p {
+  font-weight: 700;
+  margin: 0.6rem 0rem;
+}

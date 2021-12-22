@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="filter.css" />
     <link rel="stylesheet" href="card.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Movies</title>
@@ -13,6 +14,31 @@
       <h1>Movies</h1>
     </header>
     <main class="main">
+      <div class="filter rounded_border_1 d_flex">
+        <fieldset class="year_filter">
+          <p>Movie Year</p>
+          <label for="from">from</label>
+          <input type="number" id="from" name="from" />
+          <span> - </span>
+          <label for="to">to</label>
+          <input type="number" id="to" name="to" />
+          <button class="rounded_border_0">APPLY</button>
+        </fieldset>
+
+        <fieldset class="genre_filter">
+          <p>Genres</p>
+          <select name="genres" id="genres">
+            <option value="Comedy">Comedy</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Music">Music</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="search_filter">
+          <p>Search</p>
+          <input type="text" name="search" id="search" placeholder="search by title, genre, cast" />
+        </fieldset>
+      </div>
       <div class="container d_flex"></div>
     </main>
 
