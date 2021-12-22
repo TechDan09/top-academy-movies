@@ -5,15 +5,16 @@ class UI {
   //expecting an array of movies
 
   paint(movie = this.data) {
-    let output = ``;
-    let genre = ``;
+    let result = '';
     const length = movie.length;
     for (let i = 0; i < length; i++) {
+      let output = ``;
+      let genre = ``;
       movie[i].genres.forEach((g) => {
         genre += `<li class="rounded_border_0">${g}</li>`;
       });
 
-      output += `
+      output = `
       	<div class="card">
       	<img
       		src="${movie[i].posterUrl}"
@@ -37,10 +38,10 @@ class UI {
       </div>
       </div>
       `;
+      result += output;
     }
     const container = document.querySelector('.container');
-    container.insertAdjacentHTML('afterbegin', output);
-    console.log(output);
+    container.insertAdjacentHTML('afterbegin', result);
   }
 }
 

@@ -45,6 +45,7 @@
 
 .movie_info .genre {
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .movie_info .genre li {
