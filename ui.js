@@ -1,8 +1,13 @@
 class UI {
   constructor(data) {
+    //expecting an array of movies
     this.data = data;
   }
-  //expecting an array of movies
+
+  updateCount = (length) => {
+    const resultCount = document.querySelector('.result_count');
+    resultCount.textContent = `Number of Movies Displayed: ${length}`;
+  };
 
   paint(movie = this.data) {
     let result = '';
@@ -41,10 +46,7 @@ class UI {
       result += output;
     }
     const container = document.querySelector('.container');
-    container.insertAdjacentHTML('afterbegin', result);
+    container.innerHTML = result;
+    this.updateCount(length);
   }
 }
-
-const ui = new UI(movies);
-
-ui.paint();
