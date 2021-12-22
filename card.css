@@ -1,15 +1,3 @@
-:root {
-  --orange: hsl(26, 100%, 55%);
-  --pale-orange: hsl(25, 100%, 94%);
-  --very-vark-blue: hsl(220, 13%, 13%);
-  --dark-grayish-blue: hsl(219, 9%, 45%);
-  --grayish-blue: hsl(220, 14%, 75%);
-  --light-grayish-blue: hsl(0, 0%, 75%);
-  --white: hsl(0, 0%, 100%);
-  --black: hsl(0, 0%, 0%);
-  --transition-ease: 0.5s ease;
-}
-
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
