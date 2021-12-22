@@ -1,0 +1,73 @@
+:root {
+  --orange: hsl(26, 100%, 55%);
+  --pale-orange: hsl(25, 100%, 94%);
+  --very-vark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-blue: hsl(219, 9%, 45%);
+  --grayish-blue: hsl(220, 14%, 75%);
+  --light-grayish-blue: hsl(0, 0%, 75%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --transition-ease: 0.5s ease;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  max-width: 20rem;
+  min-height: 30rem;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  color: var(--white);
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+.card img {
+  object-fit: cover;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.movie_info {
+  padding: 10px;
+}
+
+.movie_info .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.movie_info .movie_details {
+  font-size: 0.8rem;
+  gap: 1rem;
+  color: var(--light-grayish-blue);
+  padding-bottom: 0.3rem;
+}
+
+.movie_info .genre {
+  gap: 0.5rem;
+}
+
+.movie_info .genre li {
+  background-color: var(--orange);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+}
+
+.movie_info .plot,
+.movie_info .director,
+.movie_info .actors {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+}
