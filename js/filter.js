@@ -1,7 +1,7 @@
 const filterByYear = () => {
   const yearFrom = document.querySelector('.from_input');
   const yearTo = document.querySelector('.to_input');
-  const yearBtn = document.querySelector('year_btn');
+  // const yearBtn = document.querySelector('year_btn');
   const from = Number(yearFrom.value);
   const to = Number(yearTo.value);
   const filtered = movies.filter((movie) => {

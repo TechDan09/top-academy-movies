@@ -2,19 +2,20 @@ class UI {
   constructor(data) {
     //expecting an array of movies
     this.data = data;
+    this.resultCount = document.querySelector('.result_count');
+    this.container = document.querySelector('.container');
   }
 
   updateCount = (length) => {
-    const resultCount = document.querySelector('.result_count');
-    resultCount.textContent = `Number of Movies Displayed: ${length}`;
+    this.resultCount.textContent = `Number of Movies Displayed: ${length}`;
   };
 
   paint(movie = this.data) {
     let result = '';
     const length = movie.length;
     for (let i = 0; i < length; i++) {
-      let output = ``;
-      let genre = ``;
+      let output = '';
+      let genre = '';
       movie[i].genres.forEach((g) => {
         genre += `<li class="rounded_border_0">${g}</li>`;
       });
@@ -47,8 +48,10 @@ class UI {
       `;
       result += output;
     }
-    const container = document.querySelector('.container');
-    container.innerHTML = result;
+    this.container.innerHTML = result;
+    //container.innerText = ''
+    //clone the template in an element and append below
+    //container.appendChild()
     this.updateCount(length);
   }
 }
