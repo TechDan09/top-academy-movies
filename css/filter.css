@@ -3,7 +3,6 @@
   margin: auto;
   padding: 1rem;
   background-color: var(--orange);
-  gap: 1rem;
   flex-wrap: wrap;
 }
 fieldset {

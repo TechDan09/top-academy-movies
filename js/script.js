@@ -1,6 +1,5 @@
-console.log(movies);
+// console.log(movies);
 const ui = new UI(movies);
-ui.paint();
 
 const getAllGenres = () => {
   const result = [...new Set(movies.flatMap(({genres}) => genres))].sort();
@@ -15,7 +14,9 @@ const getAllGenres = () => {
   }
 };
 
+//creating a separete function to call all initial functions and methods to load after dom has rendered
 const init = () => {
+  ui.paint();
   getAllGenres();
 };
 
