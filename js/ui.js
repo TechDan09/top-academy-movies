@@ -4,6 +4,7 @@ class UI {
     this.data = data;
     this.resultCount = document.querySelector('.result_count');
     this.container = document.querySelector('.container');
+    this.template = document.querySelector('.template');
   }
 
   updateCount = (length) => {
@@ -11,47 +12,27 @@ class UI {
   };
 
   paint(movie = this.data) {
-    let result = '';
+    //clear container before painting
+    this.container.innerText = '';
     const length = movie.length;
+    this.updateCount(length);
     for (let i = 0; i < length; i++) {
-      let output = '';
       let genre = '';
       movie[i].genres.forEach((g) => {
         genre += `<li class="rounded_border_0">${g}</li>`;
       });
 
-      // setting a fallback image as some of the movies img links dont resolve
-      output = `
-      	<div class="card">
-      	<img
-      		src="${movie[i].posterUrl}"
-      		alt="${movie[i].title}"
-          onerror="this.src='./assets/fallback.jpg'"
-      	/>
-      	<div class="movie_info">
-      		<p class="title">${movie[i].title}</p>
-      		<div class="movie_details d_flex gap_1">
-      			<p class="year">${movie[i].year}</p>
-      			<p class="runtime">${movie[i].runtime} Minutes</p>
-      		</div>
-      		<ul class="genre d_flex gap_1">
-						${genre}
-      		</ul>
-      		<p class="plot">
-						${movie[i].plot}
-      		</p>
-      		<p class="director">Director: ${movie[i].director}</p>
-      		<p class="actors">Cast: ${movie[i].actors}</p>
-      	</div>
-      </div>
-      </div>
-      `;
-      result += output;
+      //clone the template in order to append different duplicates to the container
+      const clone = this.template.content.cloneNode(true);
+      clone.querySelector('img').src = movie[i].posterUrl;
+      clone.querySelector('.title').textContent = movie[i].title;
+      clone.querySelector('.year').textContent = movie[i].year;
+      clone.querySelector('.runtime').textContent = `${movie[i].runtime} Minutes`;
+      clone.querySelector('.genre').innerHTML = genre;
+      clone.querySelector('.plot').textContent = movie[i].plot;
+      clone.querySelector('.director').textContent = movie[i].director;
+      clone.querySelector('.actors').textContent = movie[i].actors;
+      this.container.appendChild(clone);
     }
-    this.container.innerHTML = result;
-    //container.innerText = ''
-    //clone the template in an element and append below
-    //container.appendChild()
-    this.updateCount(length);
   }
 }

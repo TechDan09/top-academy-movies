@@ -1,9 +1,6 @@
 // console.log(movies);
 const ui = new UI(movies);
 
-/**
- *
- */
 const getAllGenres = () => {
   const result = [...new Set(movies.flatMap(({genres}) => genres))].sort();
   const length = result.length;

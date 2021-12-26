@@ -10,29 +10,22 @@
     <title>Movies</title>
   </head>
   <body>
-    <template><div class="card">
-      <img
-        src="${movie[i].posterUrl}"
-        alt="${movie[i].title}"
-        onerror="this.src='./assets/fallback.jpg'"
-      />
-      <div class="movie_info">
-        <p class="title">${movie[i].title}</p>
-        <div class="movie_details d_flex gap_1">
-          <p class="year">${movie[i].year}</p>
-          <p class="runtime">${movie[i].runtime} Minutes</p>
+    <template class="template">
+      <div class="card">
+        <img src="" alt="" onerror="this.src='./assets/fallback.jpg'" />
+        <div class="movie_info">
+          <p class="title"></p>
+          <div class="movie_details d_flex gap_1">
+            <p class="year"></p>
+            <p class="runtime"></p>
+          </div>
+          <ul class="genre d_flex gap_1"></ul>
+          <p class="plot"></p>
+          <p class="director"></p>
+          <p class="actors"></p>
         </div>
-        <ul class="genre d_flex gap_1">
-          ${genre}
-        </ul>
-        <p class="plot">
-          ${movie[i].plot}
-        </p>
-        <p class="director">Director: ${movie[i].director}</p>
-        <p class="actors">Cast: ${movie[i].actors}</p>
       </div>
-    </div>
-    </div></template>
+    </template>
     <main class="main">
       <h1>Movies</h1>
       <div class="filter rounded_border_1 d_flex justify_center gap_1">

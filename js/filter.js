@@ -27,7 +27,6 @@ const search = () => {
   const target = document.querySelector('.search_input').value;
   const filtered = movies.filter((movie) => {
     return (
-      movie.title.includes(target) ||
       movie.plot.includes(target) ||
       movie.actors.includes(target) ||
       movie.director.includes(target) ||
