@@ -7,7 +7,10 @@ const filterByYear = () => {
   const filtered = movies.filter((movie) => {
     return movie.year >= from && movie.year <= to;
   });
-  ui.paint(filtered);
+  //set new data array for object and reset page to 1
+  ui.data = filtered;
+  ui.currentPage = 1;
+  ui.paint();
 };
 
 const filterByGenre = () => {
@@ -17,7 +20,9 @@ const filterByGenre = () => {
     const filtered = movies.filter((movie) => {
       return movie.genres.includes(select.value);
     });
-    ui.paint(filtered);
+    ui.data = filtered;
+    ui.currentPage = 1;
+    ui.paint();
   } else {
     ui.paint();
   }
@@ -33,5 +38,7 @@ const search = () => {
       movie.genres.includes(target)
     );
   });
-  ui.paint(filtered);
+  ui.data = filtered;
+  ui.currentPage = 1;
+  ui.paint();
 };

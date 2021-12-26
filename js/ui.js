@@ -15,17 +15,17 @@ class UI {
     this.resultCount.textContent = `Number of Movies Displayed: ${length}`;
   };
 
-  paint(movieList = this.data) {
+  paint() {
     //clear container before painting
     this.container.innerText = '';
-    const length = movieList.length;
+    const length = this.data.length;
     this.updateCount(length);
     let page = this.currentPage;
     page--;
     let start = this.moviesPerPage * page;
     let end = start + this.moviesPerPage;
     console.log(start, end, page);
-    let paginatedItems = movieList.slice(start, end);
+    let paginatedItems = this.data.slice(start, end);
 
     for (let i = 0; i < paginatedItems.length; i++) {
       let movie = paginatedItems[i];

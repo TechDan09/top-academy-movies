@@ -19,6 +19,7 @@ const init = () => {
   ui.paint();
   // ui.setupPagination(24);
   getAllGenres();
+  console.log(ui.data);
 };
 
 document.addEventListener('DOMContentLoaded', init);
