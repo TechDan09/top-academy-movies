@@ -11,6 +11,7 @@
   --black: hsl(0, 0%, 0%);
   --dark-background: #1f2933;
   --transition-ease: 0.5s ease;
+  --yellow-green: #8cbd52;
 }
 
 * {
@@ -22,6 +23,11 @@
 
 body {
   background-color: var(--dark-background);
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit; /* no underline */
 }
 
 img {

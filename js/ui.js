@@ -86,7 +86,6 @@ class UI {
     singleMovie.genres.forEach((g) => {
       genre += `<li class="rounded_border_0">${g}</li>`;
     });
-    console.log(singleMovie);
     clone.querySelector('img').src = singleMovie.posterUrl;
     clone.querySelector('img').alt = singleMovie.title;
     clone.querySelector('.title').textContent = singleMovie.title;
@@ -99,6 +98,9 @@ class UI {
     clone.querySelector('.back_btn').addEventListener('click', () => {
       this.goBack();
     });
+    const viewImdbBtn = clone.querySelector('.view_on_imdb');
+    viewImdbBtn.href = `https://www.imdb.com/find?q=${singleMovie.title}`;
+    viewImdbBtn.setAttribute('target', '_blank');
     this.main.appendChild(clone);
   }
 
