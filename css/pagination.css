@@ -1,0 +1,22 @@
+.pagination_btn {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--white);
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  transition: ease 0.5s;
+}
+
+.pagination_btn:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.pagination_btn.active {
+  background-color: var(--orange);
+  color: var(--white);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}

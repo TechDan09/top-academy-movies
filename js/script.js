@@ -17,6 +17,7 @@ const getAllGenres = () => {
 //creating a separete function to call all initial functions and methods to load after dom has rendered
 const init = () => {
   ui.paint();
+  // ui.setupPagination(24);
   getAllGenres();
 };
 
