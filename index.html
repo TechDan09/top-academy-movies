@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/card.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/pagination.css" />
+    <link rel="stylesheet" href="./css/singlemovie.css" />
     <title>Movies</title>
   </head>
   <body>
@@ -32,8 +33,34 @@
       <button class="pagination_btn"></button>
     </template>
 
+    <template class="single_movie_template">
+      <div class="single_movie d_flex gap_1">
+        <div class="single_movie_image">
+          <img src="" alt="" onerror="this.src='./assets/fallback.jpg'" class="rounded_border_0" />
+        </div>
+        <div class="single_movie_info">
+          <p class="title">Beetlejuice</p>
+          <div class="movie_details d_flex gap_1">
+            <p class="year">1988</p>
+            <p class="runtime">92Minutes</p>
+          </div>
+          <ul class="genre d_flex gap_1">
+            <li class="rounded_border_0">Comedy</li>
+            <li class="rounded_border_0">Fantasy</li>
+          </ul>
+          <p class="plot">
+            A couple of recently deceased ghosts contract the services of a "bio-exorcist" in order
+            to remove the obnoxious new owners of their house. Director: Tim Burton
+          </p>
+          <p class="director">Director: Tim Burton</p>
+          <p class="actors">Actors: Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page</p>
+          <button>View on IMDB</button>
+          <button class="back_btn">Back</button>
+        </div>
+      </div>
+    </template>
+
     <main class="main">
-      <h1>Movies</h1>
       <div class="filter rounded_border_1 d_flex justify_center gap_1">
         <fieldset class="year_filter">
           <p>Movie Year</p>

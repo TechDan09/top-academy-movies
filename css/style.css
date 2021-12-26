@@ -60,14 +60,18 @@ button:hover {
 .gap_1 {
   gap: 1rem;
 }
+
+.flex_basis_100 {
+  flex-basis: 100%;
+}
+
+.d_none {
+  display: none;
+}
 /* CONTAINER STYLING */
 .container {
   padding: 1rem 0;
   flex-wrap: wrap;
-}
-
-.container > * {
-  /* flex-basis: 100%; */
 }
 
 .main {

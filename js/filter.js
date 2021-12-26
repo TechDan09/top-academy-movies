@@ -16,7 +16,6 @@ const filterByYear = () => {
 const filterByGenre = () => {
   const select = document.querySelector('.genre_dropdown');
   if (select.value !== '') {
-    console.log(select.value);
     const filtered = movies.filter((movie) => {
       return movie.genres.includes(select.value);
     });
@@ -25,6 +24,7 @@ const filterByGenre = () => {
     ui.paint();
   } else {
     ui.data = movies;
+    ui.currentPage = 1;
     ui.paint();
   }
 };
