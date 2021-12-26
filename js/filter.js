@@ -24,6 +24,7 @@ const filterByGenre = () => {
     ui.currentPage = 1;
     ui.paint();
   } else {
+    ui.data = movies;
     ui.paint();
   }
 };

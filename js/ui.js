@@ -12,7 +12,7 @@ class UI {
   }
 
   updateCount = (length) => {
-    this.resultCount.textContent = `Number of Movies Displayed: ${length}`;
+    this.resultCount.textContent = `Number of Movies Result: ${length}`;
   };
 
   paint() {
@@ -66,7 +66,7 @@ class UI {
       if (i === this.currentPage) {
         btn.classList.add('active');
       }
-      this.pagination.appendChild(clone);
+      this.pagination.appendChild(btn);
     }
   }
 }
