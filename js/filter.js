@@ -30,16 +30,18 @@ const filterByGenre = () => {
 };
 
 const search = () => {
-  const target = document.querySelector('.search_input').value;
-  const filtered = movies.filter((movie) => {
-    return (
-      movie.plot.includes(target) ||
-      movie.actors.includes(target) ||
-      movie.director.includes(target) ||
-      movie.genres.includes(target)
-    );
-  });
-  ui.data = filtered;
-  ui.currentPage = 1;
-  ui.paint();
+  setTimeout(() => {
+    const target = document.querySelector('.search_input').value;
+    const filtered = movies.filter((movie) => {
+      return (
+        movie.plot.includes(target) ||
+        movie.actors.includes(target) ||
+        movie.director.includes(target) ||
+        movie.genres.includes(target)
+      );
+    });
+    ui.data = filtered;
+    ui.currentPage = 1;
+    ui.paint();
+  }, 1500);
 };

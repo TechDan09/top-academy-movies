@@ -14,7 +14,7 @@
   <body>
     <template class="movie_template">
       <div class="card">
-        <img src="" alt="" onerror="this.src='./assets/fallback.jpg'" />
+        <img src="" loading="lazy" alt="" onerror="this.src='./assets/fallback.jpg'" />
         <div class="movie_info">
           <p class="title"></p>
           <div class="movie_details d_flex gap_1">
@@ -22,7 +22,6 @@
             <p class="runtime"></p>
           </div>
           <ul class="genre d_flex gap_1"></ul>
-          <p class="plot"></p>
           <p class="director"></p>
           <p class="actors"></p>
         </div>
@@ -60,6 +59,10 @@
       </div>
     </template>
 
+    <template class="genres_template">
+      <li class="rounded_border_0"></li>
+    </template>
+
     <main class="main">
       <div class="filter rounded_border_1 d_flex justify_center gap_1">
         <fieldset class="year_filter">
@@ -92,7 +95,7 @@
         </fieldset>
         <p class="result_count"></p>
       </div>
-      <div class="container movie_list d_flex justify_center gap_1"></div>
+      <div class="container movie_list d_grid justify_center gap_1"></div>
       <div class="container pagination d_flex justify_center gap_1"></div>
     </main>
     <script src="./js/movies.js"></script>
