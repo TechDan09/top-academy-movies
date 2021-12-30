@@ -78,12 +78,12 @@
           <span> - </span>
           <label for="to">to</label>
           <input type="number" id="to" name="to" class="to_input" />
-          <button class="rounded_border_0 year_btn" onclick="filterByYear()">APPLY</button>
+          <button class="rounded_border_0 year_btn">APPLY</button>
         </fieldset>
 
         <fieldset class="genre_filter">
           <p>Genres</p>
-          <select name="genres" id="genres" class="genre_dropdown" onchange="filterByGenre()">
+          <select name="genres" id="genres" class="genre_dropdown">
             <option value="" selected>Select Genre</option>
           </select>
         </fieldset>
@@ -96,7 +96,6 @@
             id="search"
             class="search_input"
             placeholder="search by title, genre, cast"
-            onkeyup="search()"
           />
         </fieldset>
         <p class="result_count"></p>
@@ -104,9 +103,6 @@
       <div class="container movie_list d_grid justify_center gap_1"></div>
       <div class="container pagination d_flex justify_center gap_1"></div>
     </main>
-    <script src="./js/movies.js"></script>
-    <script src="./js/ui.js"></script>
-    <script src="./js/filter.js"></script>
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>

@@ -1,5 +1,9 @@
+import {UI} from './ui.js';
+import {movies} from './movies.js';
+import {Filter} from './filter.js';
 // console.log(movies);
 const ui = new UI(movies);
+const filter = new Filter(ui, movies);
 
 const getAllGenres = () => {
   const result = [...new Set(movies.flatMap(({genres}) => genres))].sort();

@@ -1,4 +1,6 @@
-class UI {
+import {movies} from './movies.js';
+
+export class UI {
   constructor(data) {
     //expecting an array of movies
     this.data = data;
@@ -109,18 +111,16 @@ class UI {
   };
 
   switchPage = (e) => {
-    if (e.target.classList.contains('page_numbers')) {
+    const element = e.target.classList.length ? e.target : e.target.parentElement;
+
+    if (element.classList.contains('page_numbers')) {
       let pageNumber = Number(e.target.getAttribute('data-pagenum'));
       this.currentPage = pageNumber;
       this.paint();
-    }
-
-    if (e.target.classList.contains('next')) {
+    } else if (element.classList.contains('next')) {
       this.currentPage += 1;
       this.paint();
-    }
-
-    if (e.target.classList.contains('prev') && this.currentPage > 1) {
+    } else if (element.classList.contains('prev') && this.currentPage > 1) {
       this.currentPage -= 1;
       this.paint();
     }
@@ -128,32 +128,33 @@ class UI {
 
   showSingleMovie = (e) => {
     let target = e.target.closest('.card');
-    console.log(target);
-    if (e.target.classList.contains('card')) {
-      const id = e.target.getAttribute('data-id');
-      this.filterSection.classList.add('d_none');
-      this.container.classList.add('d_none');
-      this.pagination.classList.add('d_none');
-
-      const clone = this.singleMovieTemplate.content.cloneNode(true);
-      const singleMovie = movies[id - 1];
-
-      clone.querySelector('img').src = singleMovie.posterUrl;
-      clone.querySelector('img').alt = singleMovie.title;
-      clone.querySelector('.title').textContent = singleMovie.title;
-      clone.querySelector('.year').textContent = singleMovie.year;
-      clone.querySelector('.runtime').textContent = `${singleMovie.runtime} Minutes`;
-      clone.querySelector('.genre').appendChild(this.getGenres(singleMovie.genres));
-      clone.querySelector('.plot').textContent = singleMovie.plot;
-      clone.querySelector('.director').textContent = `Director: ${singleMovie.director}`;
-      clone.querySelector('.actors').textContent = `Actors: ${singleMovie.actors}`;
-
-      const viewImdbBtn = clone.querySelector('.view_on_imdb');
-      viewImdbBtn.href = `https://www.imdb.com/find?q=${singleMovie.title}`;
-      viewImdbBtn.setAttribute('target', '_blank');
-
-      this.main.appendChild(clone);
+    if (!target) {
+      return;
     }
+
+    const id = target.getAttribute('data-id');
+    this.filterSection.classList.add('d_none');
+    this.container.classList.add('d_none');
+    this.pagination.classList.add('d_none');
+
+    const clone = this.singleMovieTemplate.content.cloneNode(true);
+    const singleMovie = movies[id - 1];
+
+    clone.querySelector('img').src = singleMovie.posterUrl;
+    clone.querySelector('img').alt = singleMovie.title;
+    clone.querySelector('.title').textContent = singleMovie.title;
+    clone.querySelector('.year').textContent = singleMovie.year;
+    clone.querySelector('.runtime').textContent = `${singleMovie.runtime} Minutes`;
+    clone.querySelector('.genre').appendChild(this.getGenres(singleMovie.genres));
+    clone.querySelector('.plot').textContent = singleMovie.plot;
+    clone.querySelector('.director').textContent = `Director: ${singleMovie.director}`;
+    clone.querySelector('.actors').textContent = `Actors: ${singleMovie.actors}`;
+
+    const viewImdbBtn = clone.querySelector('.view_on_imdb');
+    viewImdbBtn.href = `https://www.imdb.com/find?q=${singleMovie.title}`;
+    viewImdbBtn.setAttribute('target', '_blank');
+
+    this.main.appendChild(clone);
   };
 
   goBack = (e) => {
