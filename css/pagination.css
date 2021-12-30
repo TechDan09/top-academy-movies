@@ -1,3 +1,6 @@
+.pagination {
+  flex-wrap: wrap;
+}
 .pagination_btn {
   color: var(--orange);
   font-weight: 700;
@@ -19,4 +22,14 @@
   background-color: var(--orange);
   color: var(--white);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.prev,
+.next {
+  font-size: 0.95rem;
+}
+
+.prev img,
+.next img {
+  width: 1rem;
 }

@@ -11,6 +11,7 @@ class UI {
     this.filterSection = document.querySelector('.filter');
     this.singleMovieTemplate = document.querySelector('.single_movie_template');
     this.genresTemplate = document.querySelector('.genres_template');
+    this.nextPrevTemplate = document.querySelector('.next_prev_template');
     this.moviesPerPage = 12;
     this.currentPage = 1;
     this.container.addEventListener('click', this.showSingleMovie);
@@ -19,7 +20,7 @@ class UI {
   }
 
   updateCount = (length) => {
-    this.resultCount.textContent = `Number of Movies Result: ${length}`;
+    this.resultCount.textContent = `Result: ${length}`;
   };
 
   paint = () => {
@@ -76,6 +77,17 @@ class UI {
     this.pagination.textContent = '';
     let pageCount = Math.ceil(itemsLength / this.moviesPerPage);
 
+    const prevBtn = this.nextPrevTemplate.content.cloneNode(true);
+    const prev = prevBtn.querySelector('button');
+    prev.classList.add('prev');
+    prev.querySelector('img').src = './assets/prev.svg';
+    this.pagination.appendChild(prev);
+
+    // let prevButton = document.createElement('button');
+    // prevButton.classList.add('pagination_btn', 'previous');
+    // prevButton.textContent = 'Previous';
+    // this.pagination.appendChild(prevButton);
+
     for (let i = 1; i < pageCount + 1; i++) {
       const clone = this.paginationTemplate.content.cloneNode(true);
       let btn = clone.querySelector('button');
@@ -88,17 +100,35 @@ class UI {
 
       this.pagination.appendChild(btn);
     }
+
+    const nextBtn = this.nextPrevTemplate.content.cloneNode(true);
+    const next = nextBtn.querySelector('button');
+    next.classList.add('next');
+    next.querySelector('img').src = './assets/next.svg';
+    this.pagination.appendChild(next);
   };
 
   switchPage = (e) => {
-    if (e.target.classList.contains('pagination_btn')) {
+    if (e.target.classList.contains('page_numbers')) {
       let pageNumber = Number(e.target.getAttribute('data-pagenum'));
       this.currentPage = pageNumber;
+      this.paint();
+    }
+
+    if (e.target.classList.contains('next')) {
+      this.currentPage += 1;
+      this.paint();
+    }
+
+    if (e.target.classList.contains('prev') && this.currentPage > 1) {
+      this.currentPage -= 1;
       this.paint();
     }
   };
 
   showSingleMovie = (e) => {
+    let target = e.target.closest('.card');
+    console.log(target);
     if (e.target.classList.contains('card')) {
       const id = e.target.getAttribute('data-id');
       this.filterSection.classList.add('d_none');
