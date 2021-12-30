@@ -85,11 +85,6 @@ export class UI {
     prev.querySelector('img').src = './assets/prev.svg';
     this.pagination.appendChild(prev);
 
-    // let prevButton = document.createElement('button');
-    // prevButton.classList.add('pagination_btn', 'previous');
-    // prevButton.textContent = 'Previous';
-    // this.pagination.appendChild(prevButton);
-
     for (let i = 1; i < pageCount + 1; i++) {
       const clone = this.paginationTemplate.content.cloneNode(true);
       let btn = clone.querySelector('button');
