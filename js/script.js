@@ -5,6 +5,9 @@ import {Filter} from './filter.js';
 const ui = new UI(movies);
 const filter = new Filter(ui, movies);
 
+const jsonString = JSON.stringify(movies);
+console.log(jsonString);
+
 const getAllGenres = () => {
   const result = [...new Set(movies.flatMap(({genres}) => genres))].sort();
   const length = result.length;
