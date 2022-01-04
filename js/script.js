@@ -1,30 +1,16 @@
 import {UI} from './ui.js';
 import {movies} from './movies.js';
 import {Filter} from './filter.js';
-// console.log(movies);
-const ui = new UI(movies);
-const filter = new Filter(ui, movies);
 
-const jsonString = JSON.stringify(movies);
-console.log(jsonString);
-
-const getAllGenres = () => {
-  const result = [...new Set(movies.flatMap(({genres}) => genres))].sort();
-  const length = result.length;
-  const select = document.querySelector('.genre_dropdown');
-  for (let i = 0; i < length; i++) {
-    let option = result[i];
-    let el = document.createElement('option');
-    el.textContent = option;
-    el.value = option;
-    select.appendChild(el);
-  }
-};
-
-//creating a separete function to call all initial functions and methods to load after dom has rendered
+/**
+ * Initialization function for method and classes, runs after dom loaded
+ * @function
+ */
 const init = () => {
+  const ui = new UI(movies);
   ui.paint();
-  getAllGenres();
+  const filter = new Filter(ui, movies);
+  filter.getAllGenres();
 };
 
 document.addEventListener('DOMContentLoaded', init);

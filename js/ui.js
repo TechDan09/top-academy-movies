@@ -1,6 +1,10 @@
 import {movies} from './movies.js';
 
 export class UI {
+  /**
+   * Class for dom manipulation and display
+   * @param {Array} data
+   */
   constructor(data) {
     //expecting an array of movies
     this.data = data;
@@ -21,10 +25,19 @@ export class UI {
     this.main.addEventListener('click', this.switchPage);
   }
 
+  /**
+   * Method to update number of items being displayed
+   * @method
+   * @param {number} length
+   */
   updateCount = (length) => {
     this.resultCount.textContent = `Result: ${length}`;
   };
 
+  /**
+   * Method for rendering movie cards on the dom
+   * @method
+   */
   paint = () => {
     const length = this.data.length;
     this.updateCount(length);
@@ -42,7 +55,11 @@ export class UI {
     this.setupPagination(length);
   };
 
-  //helper method to extract genres from genre subArray in movie object
+  /**
+   * Method to extract individual genres as li from movie.genres array
+   * @param {Array} data movie genre sub array
+   * @returns {documentFragment}
+   */
   getGenres = (data) => {
     const genres = document.createDocumentFragment();
 
@@ -56,9 +73,12 @@ export class UI {
     return genres;
   };
 
-  //using arrow function due to statical binding
+  /**
+   * Method to render a single card, this will be called withing paint method
+   * @param {Array} movie Array of movies to be rendered
+   */
   renderMovie = (movie) => {
-    //clone the template in order to append different duplicates to the container
+    //using arrow function due to statical binding
     const clone = this.movieTemplate.content.cloneNode(true);
     const card = clone.querySelector('.card');
     card.setAttribute('data-id', movie.id);
@@ -75,6 +95,10 @@ export class UI {
     this.container.appendChild(clone);
   };
 
+  /**
+   * Method to setup pagination buttons
+   * @param {number} itemsLength total number of movie items to be displayed
+   */
   setupPagination = (itemsLength) => {
     this.pagination.textContent = '';
     let pageCount = Math.ceil(itemsLength / this.moviesPerPage);
@@ -105,6 +129,10 @@ export class UI {
     this.pagination.appendChild(next);
   };
 
+  /**
+   * Method to change page on click based on event delegation through the main element
+   * @param {object} e
+   */
   switchPage = (e) => {
     const element = e.target.classList.length ? e.target : e.target.parentElement;
 
@@ -121,17 +149,24 @@ export class UI {
     }
   };
 
+  /**
+   * Method to display more info about a movie onclick
+   * Used event delegation to target card click
+   * @param {object} e
+   */
   showSingleMovie = (e) => {
     let target = e.target.closest('.card');
     if (!target) {
       return;
     }
-
     const id = target.getAttribute('data-id');
+
+    //Hide filter, container and pagination section
     this.filterSection.classList.add('d_none');
     this.container.classList.add('d_none');
     this.pagination.classList.add('d_none');
 
+    //clone template for rendering
     const clone = this.singleMovieTemplate.content.cloneNode(true);
     const singleMovie = movies[id - 1];
 
@@ -152,6 +187,10 @@ export class UI {
     this.main.appendChild(clone);
   };
 
+  /**
+   * Method to switch page from single movie page
+   * @param {object} e
+   */
   goBack = (e) => {
     if (e.target.classList.contains('back_btn')) {
       const singleMovie = document.querySelector('.single_movie');
