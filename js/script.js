@@ -1,5 +1,4 @@
 import {UI} from './ui.js';
-// import {movies} from './movies.js';
 import {Filter} from './filter.js';
 const Url = 'http://localhost:3000/movies';
 
@@ -11,29 +10,30 @@ const Url = 'http://localhost:3000/movies';
 async function getMovies(url) {
   try {
     let response = await fetch(url);
-    console.log('getting data');
     return await response.json();
   } catch (err) {
     console.error(err);
   }
 }
 
-//why does this cause my init function not to run
+//QUESTION: why does this cause my init function not to run
 const movies = await getMovies(Url);
 
-/**
- * Initialization function for method and classes, runs after dom loaded
- * @function
- */
-const init = () => {
-  const ui = new UI(movies);
-  ui.paint();
-  const filter = new Filter(ui, movies);
-  filter.getAllGenres();
-};
+(function () {
+  /**
+   * Initialization function for method and classes, runs after dom loaded
+   * @function
+   */
+  const init = () => {
+    const ui = new UI(movies);
+    ui.paint();
+    const filter = new Filter(ui, movies);
+    filter.getAllGenres();
+  };
 
-if (document.readyState !== 'loading') {
-  init();
-} else {
-  document.addEventListener('DOMContentLoaded', init);
-}
+  if (document.readyState !== 'loading') {
+    init();
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+  }
+})();

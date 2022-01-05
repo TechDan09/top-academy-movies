@@ -9,20 +9,30 @@ export class UI {
     //expecting an array of movies
     this.data = data;
     this.resultCount = document.querySelector('.result_count');
+
     this.main = document.querySelector('main');
+
     this.container = document.querySelector('.movie_list');
+
     this.movieTemplate = document.querySelector('.movie_template');
+
     this.pagination = document.querySelector('.pagination');
     this.paginationTemplate = document.querySelector('.pagination_template');
+
     this.filterSection = document.querySelector('.filter');
+
     this.singleMovieTemplate = document.querySelector('.single_movie_template');
+
     this.genresTemplate = document.querySelector('.genres_template');
+
     this.nextPrevTemplate = document.querySelector('.next_prev_template');
+
     this.moviesPerPage = 12;
     this.currentPage = 1;
+
     this.container.addEventListener('click', this.showSingleMovie);
-    this.main.addEventListener('click', this.goBack);
-    this.main.addEventListener('click', this.switchPage);
+
+    this.main.addEventListener('click', this.handleMainClick);
   }
 
   /**
@@ -49,6 +59,7 @@ export class UI {
     page--;
     let start = this.moviesPerPage * page;
     let end = start + this.moviesPerPage;
+
     let paginatedItems = this.data.slice(start, end);
     paginatedItems.forEach(this.renderMovie);
 
@@ -141,12 +152,18 @@ export class UI {
       this.currentPage = pageNumber;
       this.paint();
     } else if (element.classList.contains('next')) {
+      //TODO: check if we're on the last page
       this.currentPage += 1;
       this.paint();
     } else if (element.classList.contains('prev') && this.currentPage > 1) {
       this.currentPage -= 1;
       this.paint();
     }
+  };
+
+  handleMainClick = (e) => {
+    this.switchPage(e);
+    this.goBack(e);
   };
 
   /**
